@@ -1,28 +1,39 @@
 ## happy path
 * greet
   - utter_greet
+  
+## info_actions
+* followers
+  - action_followers_req
+* retweets
+ - action_retweet_req
+ 
+## user_info
+* days_info
+  - action_info_req
+  
+## tweet_source
+* tweet_source
+  - action_tweet_source
+## did_help 
 * mood_great
-  - utter_happy
-
-## sad path 1
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
   - utter_did_that_help
 * affirm
   - utter_happy
-
-## hello world path
-* hello_world
-  - action_hello_world
+* deny
+  - utter_goodbye
+  
+## sad path 1
+* mood_great
+  - utter_did_that_help
+* affirm
+  - utter_happy
+*affirm
+  - utter_ask
 
 ## sad path 2
 * greet
   - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
 * deny
   - utter_goodbye
 
@@ -30,10 +41,5 @@
 * goodbye
   - utter_goodbye
 
-## bot challenge
-* bot_challenge
-  - utter_iamabot
 
-## followers
-* followers
-  - action_followers_req
+

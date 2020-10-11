@@ -1,43 +1,37 @@
---- 
-actions: 
-  - action_hello_world
-  - action_followers_req
-entities: 
-  - username
-intents: 
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - followers
-  - hello_world
-responses: 
-  utter_cheer_up: 
-    - 
-      image: "https://i.imgur.com/nGF1K8f.jpg"
-      text: "Here is something to cheer you up:"
-  utter_did_that_help: 
-    - 
-      text: "Did that help you?"
-  utter_goodbye: 
-    - 
-      text: Bye
-  utter_greet: 
-    - 
-      text: "Hey! How are you?"
-  utter_happy: 
-    - 
-      text: "Great, carry on!"
-  utter_iamabot: 
-    - 
-      text: "I am a bot, powered by Rasa."
-session_config: 
-  carry_over_slots_to_new_session: true
+session_config:
   session_expiration_time: 60
-# slot: ~
-# type: test
-# username: ~
-
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- help_req
+- followers
+- retweets
+- days_info
+- tweet_source
+entities:
+- username
+responses:
+  utter_ask:
+  - text: 'What would you wan to know about tweets on the hastag #IndiaFightsCorona'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Bye
+  utter_greet:
+  - text: 'Hey, I can provide you with information about tweets and the users who
+      have tweeted in the hashtag #IndiaFightsCorona.. '
+  utter_happy:
+  - text: Great, is there anything else you would want me to do
+actions:
+- action_followers_req
+- action_retweet_req
+- action_info_req
+- action_tweet_source
+- utter_happy
+- utter_greet
+- utter_did_that_help
+- utter_ask

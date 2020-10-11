@@ -1,26 +1,44 @@
-# Configuration for Rasa NLU.
-# https://rasa.com/docs/rasa/nlu/components/
+--- 
 language: en
-pipeline:
-  - name: WhitespaceTokenizer
-  - name: RegexFeaturizer
-  - name: LexicalSyntacticFeaturizer
-  - name: CountVectorsFeaturizer
-  - name: CountVectorsFeaturizer
-    analyzer: "char_wb"
-    min_ngram: 1
+pipeline: 
+  - 
+    model: en_core_web_md
+    name: SpacyNLP
+  -
+    name: SpacyTokenizer
+  - 
+    case_sensitive: false
+    name: RegexFeaturizer
+  - 
+    name: CountVectorsFeaturizer
+  - 
+    name: CRFEntityExtractor
+    use_lookup_tables: true
+    use_regexes: true
+  - 
+    name: LexicalSyntacticFeaturizer
+  - 
+    name: CountVectorsFeaturizer
+  - 
+    analyzer: char_wb
     max_ngram: 4
-  - name: DIETClassifier
+    min_ngram: 1
+    name: CountVectorsFeaturizer
+  - 
+    entity_recognition: true
     epochs: 100
-  - name: EntitySynonymMapper
-  - name: ResponseSelector
-    epochs: 100
+    name: DIETClassifier
+  - 
+    name: EntitySynonymMapper
 
-# Configuration for Rasa Core.
-# https://rasa.com/docs/rasa/core/policies/
-policies:
-  - name: MemoizationPolicy
-  - name: TEDPolicy
-    max_history: 5
+  - 
+    name: EntitySynonymMapper
+policies: 
+  - 
+    name: MemoizationPolicy
+  - 
     epochs: 100
-  - name: MappingPolicy
+    max_history: 5
+    name: TEDPolicy
+  - 
+    name: MappingPolicy
